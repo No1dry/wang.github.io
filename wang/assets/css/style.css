@@ -1,0 +1,710 @@
+/* =============================================
+   Global Styles & Variables
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #5a5a7a;
+  --color-accent: #2a4a8a;
+  --color-accent-light: #4a6abf;
+  --color-border: #d8dce8;
+  --color-sidebar-bg: #f5f6fa;
+  --color-tag-bg: #e8ecf8;
+  --color-tag-text: #2a4a8a;
+  --nav-height: 62px;
+  --sidebar-width: 280px;
+  --max-width: 1100px;
+  --font-serif: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
+  --font-sans: 'Noto Serif SC', 'Source Serif 4', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+/* =============================================
+   Navigation Bar
+   ============================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 12px rgba(42, 74, 138, 0.06);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-inner {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.navbar-brand:hover {
+  text-decoration: none;
+  color: var(--color-accent-light);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.navbar-links li a {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.01em;
+}
+.navbar-links li a:hover,
+.navbar-links li a.active {
+  background: var(--color-tag-bg);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* =============================================
+   Page Wrapper
+   ============================================= */
+.page-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
+
+/* =============================================
+   Index Page – Two-column layout
+   ============================================= */
+.index-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--nav-height) - 100px);
+}
+
+/* Left sidebar – sticky */
+.profile-sidebar {
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  align-self: flex-start;
+}
+
+.profile-card {
+  background: var(--color-sidebar-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  object-fit: cover;
+  margin: 0 auto 18px;
+  display: block;
+  background: #d0d4e4;
+}
+
+.profile-photo-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  background: linear-gradient(135deg, #c8d0e8, #e0e4f0);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--color-accent);
+}
+
+.profile-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.profile-name-en {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.profile-info-list {
+  list-style: none;
+  text-align: left;
+  margin-top: 12px;
+}
+
+.profile-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.profile-info-list li:first-child {
+  border-top: none;
+}
+
+.profile-info-list .info-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+.profile-info-list a {
+  color: var(--color-accent);
+  word-break: break-all;
+}
+
+/* Right content area – scrollable */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =============================================
+   Content Sections
+   ============================================= */
+.content-section {
+  margin-bottom: 48px;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-heading::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.2em;
+  background: var(--color-accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-text {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+.section-text p {
+  margin-bottom: 12px;
+}
+
+/* Research interests tags */
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.research-tag {
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(42, 74, 138, 0.2);
+}
+
+/* Publication entries on index */
+.pub-entry {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+.pub-entry:last-child {
+  border-bottom: none;
+}
+.pub-entry .pub-title {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+.pub-entry .pub-authors {
+  color: var(--color-text-muted);
+  margin-bottom: 3px;
+}
+.pub-entry .pub-authors strong {
+  color: var(--color-accent);
+}
+.pub-entry .pub-venue {
+  color: var(--color-accent-light);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+.pub-entry .pub-badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.pub-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  font-weight: 500;
+}
+
+/* =============================================
+   Lab Page (no sidebar)
+   ============================================= */
+.lab-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lab-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.lab-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+/* Team grid */
+.team-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  padding: 6px 14px;
+  background: var(--color-tag-bg);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 6px 6px 0;
+  margin: 28px 0 20px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.single-master{
+    grid-column: 1 / -1;
+    justify-self: center;
+    width:100%;
+}
+
+.team-photo {
+  width: 140px;
+  height: 155px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d0d8ec, #eaedf8);
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin-bottom: 3px;
+}
+
+.team-role {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* =============================================
+   Graduated Alumni – horizontal card layout
+   ============================================= */
+.alumni-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.alumni-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: var(--color-sidebar-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: box-shadow 0.2s;
+}
+
+.alumni-card:hover {
+  box-shadow: 0 4px 16px rgba(42, 74, 138, 0.08);
+}
+
+.alumni-photo {
+  flex-shrink: 0;
+  width: 140px;
+  height: 155px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d0d8ec, #eaedf8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  margin-left: 12px;
+}
+
+.alumni-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alumni-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.alumni-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+  width: 180px; 
+}
+
+.alumni-affiliation {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2px
+}
+
+.alumni-pubs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.alumni-pub-entry {
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 6px 6px 0;
+}
+
+.alumni-pub-title {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2px;
+  line-height: 1.45;
+}
+
+.alumni-pub-venue {
+  color: var(--color-accent-light);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.alumni-pub-year {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-left: 6px;
+}
+
+@media (max-width: 600px) {
+  .alumni-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .alumni-pub-entry {
+    text-align: left;
+  }
+}
+
+/* =============================================
+   Publications / Join Us – empty placeholder
+   ============================================= */
+.placeholder-section {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  gap: 12px;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+/* =============================================
+   Footer
+   ============================================= */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 20px 32px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 40px;
+}
+
+/* =============================================
+   News Page
+   ============================================= */
+
+.news-list{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.news-item{
+  display:flex;
+  gap:24px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--color-border);
+}
+
+.news-date{
+  flex-shrink:0;
+  width:90px;
+  font-family:var(--font-mono);
+  font-size:0.85rem;
+  color:var(--color-accent);
+  font-weight:500;
+}
+
+.news-content{
+  flex:1;
+  font-size:0.9rem;
+  line-height:1.7;
+}
+
+.news-media{
+  margin-top:10px;
+}
+
+.news-media iframe{
+  max-width:100%;
+  border-radius:8px;
+}
+
+/* =============================================
+   Publications Page
+   ============================================= */
+
+.pub-layout{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.pub-list{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.pub-item{
+  display:flex;
+  gap:22px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--color-border);
+}
+
+.pub-image{
+  flex-shrink:0;
+  width:160px;
+  height:110px;
+  border-radius:8px;
+  overflow:hidden;
+  border:1px solid var(--color-border);
+  background:#f3f5fb;
+}
+
+.pub-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.pub-info{
+  flex:1;
+}
+
+.pub-info .pub-title{
+  font-weight:700;
+  font-size:0.95rem;
+  margin-bottom:4px;
+}
+
+.pub-info .pub-authors{
+  font-size:0.85rem;
+  color:var(--color-text-muted);
+  margin-bottom:3px;
+}
+
+.pub-info .pub-venue{
+  font-size:0.85rem;
+  font-style:italic;
+  color:var(--color-accent-light);
+  margin-bottom:6px;
+}
+
+.pub-links{
+  display:flex;
+  gap:10px;
+  font-size:0.82rem;
+  margin-bottom:6px;
+}
+
+.pub-links a{
+  color:var(--color-accent);
+}
+
+.pub-abstract{
+  display:none;
+  font-size:0.85rem;
+  line-height:1.6;
+  color:var(--color-text-muted);
+  margin-top:6px;
+}
+
+.section-text ul{
+  margin:10px 0 14px 18px;
+}
+
+.section-text li{
+  margin-bottom:4px;
+}
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 1200px) {
+  .index-layout {
+    flex-direction: column;
+  }
+  .profile-sidebar {
+    position: static;
+    width: 100%;
+  }
+  .page-wrapper {
+    padding: 24px 18px 40px;
+  }
+  .navbar-brand {
+    font-size: 0.95rem;
+  }
+  .navbar-links li a {
+    font-size: 0.82rem;
+    padding: 5px 9px;
+  }
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
